@@ -1,229 +1,235 @@
-# Awesome-Time-Series-Forecasting
-
-## Top Time Series Forecasting Tools Ecosystem
-
-
-
-**Curated List of SaaS Products & Open-Source GitHub Projects**  
-
-*Focused on Foundation Models, Automated ML & Multivariate Forecasting*  
-
-**Last updated: March 2026**
-
-
-
-This repository tracks notable **SaaS platforms** and **open-source projects** for **Time Series Forecasting**. These tools predict future values of sequentially indexed data — sales, demand, traffic, inventory, and sensor readings — using statistical methods, automated machine learning, and increasingly, foundation models that forecast zero-shot without task-specific training.
-
-
-
-**Examples** include DataRobot, H2O.ai, Pecan AI, AWS Forecast, Azure Automated ML, Databricks, BigML, dotData, Akkio, and RapidMiner (the category leaders).
-
-
-
-**Open-source emphasis**: This section is heavily expanded with every major active project for self-hosting, foundation-model forecasting, and transparent time-series pipelines — ideal for data scientists prioritizing reproducibility, developers building forecasting services, and organizations avoiding per-model enterprise pricing.
-
-
-
-Contributions welcome! Open a PR to add/update entries. Keep descriptions factual and link to official sites.
-
-
-
-## Table of Contents
-
-- [SaaS/Hosted Platforms](#saas-hosted-platforms)
-
-- [Open-Source GitHub Projects](#open-source-github-projects)
-
-- [How to Contribute](#how-to-contribute)
-
-- [Disclaimer](#disclaimer)
-
-
-
-## SaaS/Hosted Platforms
-
-
-
-- **[DataRobot](https://www.datarobot.com/)**  
-
-  Enterprise AutoML platform with strong time-series forecasting capabilities. Automatically detects stationarity and seasonality and implements backtesting to achieve high accuracy . Uses open-source algorithms including scikit-learn, H2O, TensorFlow, and XGBoost . Pricing starts at **$65,000/year for 5 users, 10 model workers, and 5 deployed models** . Often perceived as expensive for smaller teams, with seat-based limits around 5 users per license . No built-in ETL — users must prepare data elsewhere .
-
-
-
-- **[H2O.ai Driverless AI](https://h2o.ai/platform/dai-timeseries/)**  
-
-  AutoML platform with comprehensive time-series capabilities. Handles automatic time groups, robust validation without data leakage, time-series-specific feature engineering, and integration with existing feature engines . Features include date features (day of week, day of month), auto-regressive features (optimal lag, lag-feature interaction), exponentially weighted moving averages, target transformations, and differentiation . **Fast TTA** (Test Time Augmentation) applies regularization during prediction for production stability — disable for regulatory compliance requiring deterministic outputs .
-
-
-
-- **[Pecan AI](https://www.pecan.ai/)**  
-
-  Predictive AI agent built for business outcomes, delivering predictions directly to CRM without requiring a data science team . Handles churn prediction, LTV modeling, lead scoring, demand forecasting, upsell/cross-sell, winback, fraud prevention, and campaign ROAS prediction . Reports average results including **12% churn reduction**, **15% marketing ROAS improvement**, **25% inventory cost reduction**, and **90% of predictions delivered without data science support** . Plans: **Starter** (2 prediction batches/month, 500M rows), **Team** (10 batches, 2B rows), and **Business** (custom, 5B rows) .
-
-
-
-- **[Amazon Forecast](https://aws.amazon.com/forecast/)**  
-
-  Fully managed service using statistical and ML algorithms for high-accuracy forecasting, based on the same technology used at Amazon.com . Automates algorithm selection via AutoML, handles missing values with multiple imputation methods, and integrates built-in datasets . Use cases span retail demand planning, supply chain, resource planning, and operational planning . **No longer available to new customers** — existing customers continue as normal . Pricing is usage-based with no minimum; free tier includes 10,000 forecasts/month, 10GB storage, and 10 hours training for the first two months .
-
-
-
-- **[Azure Automated ML](https://azure.microsoft.com/en-us/products/machine-learning/)**  
-
-  Automated machine learning within Azure Machine Learning for time-series forecasting. Supports "pivoted" time-series formulation where past values become additional dimensions for regressors, with separate train and validation set specification . Models are serialized as Python pickle files, with documented procedures for local deployment .
-
-
-
-- **[Databricks AutoML Forecasting](https://docs.databricks.com/)**  
-
-  AutoML forecasting via the Databricks Model Training UI or Python API (`databricks.automl.forecast()`) . Requires training data with a time-series column saved as a Unity Catalog table. Supports multi-series forecasting with time-series identifier columns, custom data splits, weight columns, holiday regions, and timeout configuration . Runs on fully-managed compute, registers models to Unity Catalog, and generates batch inference notebooks automatically .
-
-
-
-- **[BigML Time Series](https://bigml.com/)**  
-
-  Optimized implementation of **exponential smoothing methods** (ETS) for time-series forecasting . Assigns exponentially increasing weights to more recent instances, modeling trend and seasonal patterns . Handles missing values via spline interpolation by default . Supports **univariate and multivariate** time series, with model parameters including alpha, beta, gamma, phi, and period exposed via API . Outputs include point forecasts, 95% confidence bounds, and ETS model classification (e.g., M,Ad,N) .
-
-
-
-- **[dotData](https://dotdata.com/)**  
-
-  Automated feature discovery platform for time-series forecasting. A national healthcare company using Facebook Prophet increased **forecast accuracy by 20%** in 3 days with dotData — discovering **67,000 multi-dimensional features** and testing **700 ML models** by a single data scientist . **dotData Insight 3.0** (September 2026) integrates AutoML prediction capabilities with feature discovery, adding offline installation support, Microsoft Entra ID SSO, and pivot analysis visualization .
-
-
-
-- **[Akkio](https://www.akkio.com/)**  
-
-  No-code AI platform for forecasting revenue, costs, commodity prices, and market trajectory . Builds models in as little as **10 seconds** (optional 1-5 minute training for potentially higher accuracy) with no charge for model training time . Deploys via API, Salesforce, Zapier, or web app. Includes confidence bounds visualization and accuracy metrics . Targets non-technical teams and agencies.
-
-
-
-- **[RapidMiner](https://rapidminer.com/)**  
-
-  Data science platform with a **Time Series extension** (AGPL licensed) adding operators for transformations, filtering, decomposition, feature extraction, forecasting, windowing, validation, and more . Supports multivariate time series with multiple attributes processed simultaneously, and index attributes of datetime or numeric type .
-
-
-
-## Open-Source GitHub Projects
-
-
-
-- **[TimesFM](https://github.com/google-research/timesfm)**  
-
-  **Google Research's time-series foundation model** — the leading open-weight forecasting model. **TimesFM-3** (330M parameters) is pre-trained on **1 trillion+ time points** and is natively multivariate . Supports multiple targets (jointly forecasting related series), past covariates (historically known features), and past-future covariates (known future events like promotions or holidays) . Uses **Contiguous Patch Masking** for single-pass forecasting without autoregressive iteration, predicting **9 quantiles** (10th-90th percentile) for each target . Zero-shot forecasting without task-specific fine-tuning. Available on Hugging Face.
-
-
-
-- **[sktime](https://github.com/sktime/sktime)**  
-
-  **Unified framework for time-series machine learning** with a scikit-learn-compatible API. Provides forecasting, classification, regression, clustering, and annotation for time series. Includes a large ecosystem of algorithm adapters (statsmodels, Prophet, ARIMA, exponential smoothing) and transformation tools. BSD-3-Clause licensed.
-
-
-
-- **[StatsForecast](https://github.com/Nixtla/statsforecast)**  
-
-  **Lightning-fast statistical forecasting library** from Nixtla. Implements ARIMA, ETS, CES, Theta, and other classical models with **native parallelism** via numba. Handles multiple seasonalities and high-frequency data. Designed for performance on large-scale forecasting tasks. Apache 2.0 licensed.
-
-
-
-- **[NeuralForecast](https://github.com/Nixtla/neuralforecast)**  
-
-  **Deep learning forecasting library** from Nixtla. Implements NBEATS, NHITS, TFT, PatchTST, TimesNet, and other neural architectures with a unified API. Supports exogenous variables, static features, and probabilistic forecasting. Apache 2.0 licensed.
-
-
-
-- **[Prophet](https://github.com/facebook/prophet)**  
-
-  **Meta's additive regression model** for forecasting with daily observations. Handles missing data, shifts in trend, and multiple seasonality (daily, weekly, yearly) with interpretable parameters. Includes holiday effects and changepoint detection. MIT licensed. Widely used but has known limitations for multi-dimensional forecasting .
-
-
-
-- **[Darts](https://github.com/unit8co/darts)**  
-
-  **User-friendly forecasting and anomaly detection library** for Python. Provides a consistent API for classical (ARIMA, ETS) and deep learning (RNN, TCN, Transformer) models, with built-in backtesting, ensemble methods, and probabilistic forecasting. Apache 2.0 licensed.
-
-
-
-- **[GluonTS](https://github.com/awslabs/gluonts)**  
-
-  **Probabilistic time-series modeling toolkit** from AWS. Provides deep learning models (DeepAR, Transformer, WaveNet) and classical models with a unified probabilistic API. Powers Amazon Forecast under the hood. Apache 2.0 licensed.
-
-
-
-- **[PyTorch Forecasting](https://github.com/jdb78/pytorch-forecasting)**  
-
-  **Deep learning for time-series forecasting in PyTorch.** Implements Temporal Fusion Transformer (TFT), NBEATS, DeepAR, and other architectures with a high-level API built on PyTorch Lightning. Handles covariates, static features, and multi-horizon forecasting.
-
-
-
-- **[tsfresh](https://github.com/blue-yonder/tsfresh)**  
-
-  **Automatic extraction of 750+ time-series features** for regression and classification. Includes feature selection based on statistical significance. MIT licensed. Useful for feature engineering pipelines feeding into tree-based forecasters.
-
-
-
-- **[ETNA](https://github.com/tinkoff-ai/etna)**  
-
-  **Time-series analysis library** from Tinkoff with a focus on practical forecasting. Provides EDA tools, classical and neural models, backtesting, and pipeline composition. Apache 2.0 licensed.
-
-
-
-### Additional Strong Open-Source Options
-
-
-
-- **Kats** — Meta's lightweight, generalizable framework for time-series analysis including forecasting, detection, and feature extraction.
-
-- **Orbit** — Uber's Python library for Bayesian time-series forecasting with probabilistic modeling and inference.
-
-- **pmdarima** — Python wrapper for R's auto.arima, providing automated ARIMA model selection.
-
-- **PyOD** — Python Outlier Detection toolkit useful for anomaly detection in time-series data.
-
-- **Merlion** — Salesforce's time-series anomaly detection library with autoML capabilities.
-
-- **Greykite** — LinkedIn's flexible forecasting library with interpretable models.
-
-
-
-**Frameworks for building custom systems**: Combine **TimesFM** for zero-shot multivariate forecasting, **StatsForecast** or **NeuralForecast** for specialized classical and deep learning models, **sktime** or **Darts** for unified experimentation, and **tsfresh** for automated feature engineering to build a complete open-source forecasting stack.
-
-
-
-## How to Contribute
-
-
-
-1. Fork the repo.
-
-2. Add/edit entries in `README.md` (follow existing format).
-
-3. Include: name, link, 1–2 sentence description, and whether it's SaaS or open-source.
-
-4. Submit PR with a short explanation.
-
-
-
-Star the repo if you find it useful!
-
-
-
-## Disclaimer
-
-
-
-- This is a **community-curated** list — not exhaustive and not an endorsement.
-
-- Time-series forecasting tools involve statistical modeling and uncertainty quantification. **Forecasts are probabilistic estimates, not guarantees** — confidence bounds should be communicated to stakeholders, and predictions should be validated against actual outcomes for monitoring drift. Foundation models provide strong zero-shot baselines but may underperform domain-specific fine-tuned models on niche tasks.
-
-- Self-hosted open-source solutions require proper data pipeline integration, model monitoring, and retraining strategies for production use.
-
-
+<p align="center">
+  <img src="assets/banner.svg" alt="Awesome Time Series Forecasting Banner" width="100%" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
+  <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square&logo=github" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square&logo=github" alt="GitHub Forks" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/issues"><img src="https://img.shields.io/github/issues/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square" alt="Issues" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License" /></a>
+  <a href="https://github.com/ishandutta2007"><img alt="GitHub followers" src="https://img.shields.io/github/followers/ishandutta2007?label=Follow" /></a>
+</p>
+
+# 🚀 Awesome Time Series Forecasting
+
+> **A curated catalog of premier Enterprise SaaS Platforms, Foundational Large Time Series Models (TSFMs), Automated Machine Learning (AutoML), and Open-Source Deep Learning Frameworks for Time Series Forecasting.**
+
+**Time Series Forecasting** is the science and engineering of predicting future values across sequentially indexed observations — including retail demand, energy grid load, stock prices, IoT sensor telemetry, server capacity, and supply chain logistics. Modern forecasting has transformed from classical statistical methods (ARIMA, Exponential Smoothing) to deep learning sequence architectures (TFT, PatchTST, N-HiTS) and zero-shot foundation models (TimesFM, Chronos).
 
 ---
 
+## 📑 Table of Contents
 
+- [🌐 Sector Overview & Market Dynamics](#-sector-overview--market-dynamics)
+- [🏢 Enterprise SaaS & Hosted Platforms](#-enterprise-saas--hosted-platforms)
+- [🛠️ Open-Source GitHub Projects](#️-open-source-github-projects)
+  - [Top Open-Source Libraries (Ranked by Stars)](#top-open-source-libraries-ranked-by-stars)
+- [🧩 Time Series Forecasting Taxonomy](#-time-series-forecasting-taxonomy)
+- [🎯 Industry Use Cases](#-industry-use-cases)
+- [📏 Standard Evaluation Metrics](#-standard-evaluation-metrics)
+- [🤝 How to Contribute](#-how-to-contribute)
+- [🌟 Star History](#-star-history)
+- [💖 Support & Sponsoring](#-support--sponsoring)
+- [⚖️ Disclaimer & License](#️-disclaimer--license)
 
-**Made for data scientists, ML engineers, demand planners, and developers building time-series forecasting platforms.**  
+---
 
-Let's make time-series forecasting more open, accurate, and reproducible.
+## 🌐 Sector Overview & Market Dynamics
+
+The global **Time Series Analytics and Forecasting Software Market** is currently valued at approximately **$4.8 Billion to $5.5 Billion** and is projected to surge to **$14.2 Billion by 2034**, advancing at a robust compound annual growth rate (**CAGR of ~12.8%**), driven by rapid expansion in IoT telemetry, automated supply chains, smart utilities, and generative AI forecasting. When combined with the broader **Predictive Analytics & Enterprise ML Software Market**, the sector expands past **$30 Billion** toward **$80+ Billion**.
+
+### 📊 Fragmentation vs. Concentration
+The industry exhibits **moderate fragmentation** rather than a winner-take-all monopoly:
+- **Hyperscalers & Lakehouse Giants** (*Microsoft Azure, AWS, Databricks*) dominate foundational cloud infrastructure, massive ETL data ingestion, and general-purpose enterprise machine learning pipelines.
+- **Specialized AutoML & Foundation Model Challengers** (*DataRobot, Nixtla, Pecan AI, Akkio*) retain strong pricing power and substantial high-margin market share by solving domain-specific challenges — such as low-code marketing mix modeling, no-code CRM demand scoring, lightning-fast high-frequency statistical backtesting, and zero-shot foundation model inferencing.
+
+---
+
+## 🏢 Enterprise SaaS & Hosted Platforms
+
+The following enterprise platforms offer managed time-series forecasting, automated feature discovery, and scalable prediction endpoints. The table is ranked in **descending order by company size and market valuation**.
+
+| 🏢 Platform / Vendor | 📈 Company Valuation / Scale | 💰 Starting Pricing | 🎁 Free Tier / Free Trial Limits | 🔍 Key Capabilities & Best For |
+| :--- | :--- | :--- | :--- | :--- |
+| **[Azure Automated ML](https://azure.microsoft.com/en-us/products/machine-learning/)** | **~$3.1 Trillion** (Market Cap) / $245B+ Annual Revenue | **$0.096/hour** compute rate (Standard_DS2_v2 VM) + Azure ML orchestration | **$200 free credit** for 30 days + **12 months free** popular services + 55+ services permanently free | Automated multi-horizon forecasting, rolling-origin cross validation, holiday calendars, deep integration with Azure Synapse, Power BI & Fabric. |
+| **[Amazon Forecast](https://aws.amazon.com/forecast/)** | **~$2.0 Trillion** (Market Cap) / $105B+ AWS Annual Revenue | **$0.60 per 1,000** forecasts + **$0.24/hour** model training + **$0.088/GB-month** storage | AWS Free Tier: **10,000 forecasts/month**, **10 GB storage**, and **10 hours training/month** free for the first **2 months (60 days)** | Managed probabilistic DeepAR+ and AutoML ensembling with native exogenous data integration (weather trends, retail promotion calendars). |
+| **[Databricks AutoML Forecasting](https://docs.databricks.com/)** | **~$43 Billion** (Valuation) / $1.6B+ Annual Recurring Revenue | **$0.07 – $0.15 per DBU** (Databricks Unit) on Standard tier (~$0.40/DBU Enterprise) | **14-day free trial** of full Databricks Lakehouse platform with automated model training and notebook generation | Distributed multi-series forecasting on Apache Spark; automatically generates transparent, fully reproducible Python notebooks (Prophet, ARIMA). |
+| **[Altair RapidMiner](https://rapidminer.com/)** | **~$10.6 Billion** (Siemens acquisition valuation) / $610M+ Revenue | **$5,000/user/year** (RapidMiner Studio Small commercial license) | **Free Forever Edition** limited to **10,000 data rows** and 1 logical processor + **30-day unlimited trial** of Studio Enterprise | Visual drag-and-drop workflow designer with AGPL Time Series operator package covering windowing, trend decomposition, smoothing, and ARIMA. |
+| **[DataRobot](https://www.datarobot.com/)** | **~$6.3 Billion** (Valuation) / $250M+ Annual Recurring Revenue | **$65,000/year** standard enterprise contract (5 seats, 10 model workers, 5 deployed models; AWS Marketplace starts ~$25,000/yr) | **30-day free trial** of DataRobot AI Platform with hosted notebook workspace, automated backtesting, and model leaderboard | Enterprise AutoML leader with automated stationarity/seasonality detection, multi-series cold-start modeling, out-of-time backtesting, and drift monitoring. |
+| **[H2O.ai Driverless AI](https://h2o.ai/platform/dai-timeseries/)** | **~$1.7 Billion** (Valuation) / $151M total VC funding | **$50,000/year** per GPU/compute node license (or cloud marketplace from **~$2.50/hour**) | **14-day full-feature trial license** with GPU acceleration, automatic lag generation, and genetic algorithm feature discovery | High-performance feature engineering via genetic algorithms, Test Time Augmentation (TTA), automatic lag discovery, and grouped series forecasting. |
+| **[Pecan AI](https://www.pecan.ai/)** | **~$500 Million** (Valuation) / $117M total VC funding | **$760/month** ($9,120/year billed annually) for Starter tier (2 prediction models/batches/month, 500M rows) | **14-day free trial** with sample predictive pipelines, CRM integrations, and predictive lead/demand modeling | Predictive GenAI agent translating raw CRM and ERP data directly into revenue, churn, demand, and campaign ROAS predictions without data science overhead. |
+| **[dotData](https://dotdata.com/)** | **~$120 Million** (Valuation) / $74M total VC funding | **$30,000/year** entry baseline for dotData Cloud / private enterprise marketplace offer | **14-day guided proof-of-value (PoV)** sandbox environment with engineering support and sample dataset evaluation | Proprietary Feature Factory discovering tens of thousands of relational time-series features directly from enterprise multi-table SQL databases. |
+| **[BigML Time Series](https://bigml.com/)** | **~$50 Million** (Valuation) / ~$12M Annual Recurring Revenue | **$30/month** for Bronze subscription tier (100 MB max dataset size, 2 parallel tasks) | **3-day unlimited trial** (up to 60 tasks, no credit card required) + **Free Forever tier** capped at 16 MB dataset limit and 1 parallel task | Web UI and REST API for exponential smoothing (ETS) models with auto-parameter tuning (alpha, beta, gamma, phi) and 95% confidence bounds. |
+| **[Akkio](https://www.akkio.com/)** | **~$30 Million** (Valuation) / $17.5M total VC funding | **$49/seat/month** for Starter tier ($499/month for Pro tier with full API integrations) | **14-day free trial** with full access to predictive models, web app, and exploratory data analysis tools | Fast sub-minute model training, generative BI insights, and no-code time-series predictions designed for non-technical marketing and operations teams. |
+
+---
+
+## 🛠️ Open-Source GitHub Projects
+
+Explore the most influential open-source forecasting engines, ranging from statistical workhorses to cutting-edge transformer foundation models. 
+
+### Top Open-Source Libraries (Ranked by Stars)
+
+- **[Qlib](https://github.com/microsoft/qlib)** [![Stars](https://img.shields.io/github/stars/microsoft/qlib?style=social&color=white)](https://github.com/microsoft/qlib/stargazers)  
+  *Microsoft's AI-oriented quantitative investment and sequential forecasting platform.* Includes comprehensive machine learning pipelines for time-series feature engineering, model training, alpha mining, and rigorous financial backtesting.
+
+- **[TimesFM](https://github.com/google-research/timesfm)** [![Stars](https://img.shields.io/github/stars/google-research/timesfm?style=social&color=white)](https://github.com/google-research/timesfm/stargazers)  
+  *Google Research's state-of-the-art time-series foundation model.* Pre-trained on over **1 trillion real-world time points**, **TimesFM-3** delivers zero-shot multivariate forecasting, Contiguous Patch Masking for single-pass inferences, and simultaneous 9-quantile probabilistic interval estimation without task-specific fine-tuning.
+
+- **[Prophet](https://github.com/facebook/prophet)** [![Stars](https://img.shields.io/github/stars/facebook/prophet?style=social&color=white)](https://github.com/facebook/prophet/stargazers)  
+  *Meta's decomposable additive regression model.* Optimally designed for business time series exhibiting strong daily, weekly, and yearly seasonalities, irregular holiday schedules, and historical trend changepoints. Robust against missing data and severe outliers.
+
+- **[Time-Series-Library (TSlib)](https://github.com/thuml/Time-Series-Library)** [![Stars](https://img.shields.io/github/stars/thuml/Time-Series-Library?style=social&color=white)](https://github.com/thuml/Time-Series-Library/stargazers)  
+  *Tsinghua University's definitive benchmark repository for deep learning time-series research.* Unifies top deep architectures into a single extensible PyTorch codebase, including **PatchTST**, **TimesNet**, **iTransformer**, **DLinear**, **Informer**, **Autoformer**, and **FEDformer**.
+
+- **[AutoGluon (TimeSeries)](https://github.com/autogluon/autogluon)** [![Stars](https://img.shields.io/github/stars/autogluon/autogluon?style=social&color=white)](https://github.com/autogluon/autogluon/stargazers)  
+  *AWS's state-of-the-art AutoML framework.* The `autogluon.timeseries` module automates end-to-end multi-series forecasting by ensembling pre-trained foundation models (Chronos), neural networks (PatchTST, TiDE), and statistical estimators (AutoARIMA) with a simple 3-line Python API.
+
+- **[sktime](https://github.com/sktime/sktime)** [![Stars](https://img.shields.io/github/stars/sktime/sktime?style=social&color=white)](https://github.com/sktime/sktime/stargazers)  
+  *Unified Python framework for time series machine learning.* Scikit-learn compatible interface providing unified tooling for forecasting, classification, clustering, anomaly detection, and composable transformation pipelines.
+
+- **[PyOD](https://github.com/yzhao062/pyod)** [![Stars](https://img.shields.io/github/stars/yzhao062/pyod?style=social&color=white)](https://github.com/yzhao062/pyod/stargazers)  
+  *The industry-standard Python library for detecting outliers and anomalies.* Contains over 40 classical, proximity-based, and deep learning anomaly detection algorithms essential for cleaning noisy time series prior to forecasting.
+
+- **[Darts](https://github.com/unit8co/darts)** [![Stars](https://img.shields.io/github/stars/unit8co/darts?style=social&color=white)](https://github.com/unit8co/darts/stargazers)  
+  *User-friendly Python time-series library featuring a cohesive scikit-learn API.* Integrates classic models (ARIMA, Exponential Smoothing) and advanced neural forecasters (TiDE, N-BEATS, N-HiTS, Temporal Fusion Transformer) alongside backtesting, multivariate covariates, and probabilistic intervals.
+
+- **[tsfresh](https://github.com/blue-yonder/tsfresh)** [![Stars](https://img.shields.io/github/stars/blue-yonder/tsfresh?style=social&color=white)](https://github.com/blue-yonder/tsfresh/stargazers)  
+  *Automated feature extraction and selection library.* Automatically extracts over 750 descriptive statistical, spectral, and non-linear characteristics from time series, paired with rigorous hypothesis testing to eliminate non-informative regressors.
+
+- **[Kats](https://github.com/facebookresearch/Kats)** [![Stars](https://img.shields.io/github/stars/facebookresearch/Kats?style=social&color=white)](https://github.com/facebookresearch/Kats/stargazers)  
+  *Meta's scalable and generalizable framework for time-series analysis.* Features modular components for forecasting (ARIMA, SARIMA, Prophet, LSTM), changepoint detection, outlier filtering, and 65+ time-series feature calculations.
+
+- **[tsai](https://github.com/timeseriesAI/tsai)** [![Stars](https://img.shields.io/github/stars/timeseriesAI/tsai?style=social&color=white)](https://github.com/timeseriesAI/tsai/stargazers)  
+  *Cutting-edge Deep Learning library for time-series and sequential data.* Built on PyTorch and fastai, tsai implements over 30 modern architectures for univariate/multivariate time-series forecasting, sequence classification, and self-supervised contrastive representation learning.
+
+- **[Chronos](https://github.com/amazon-science/chronos-forecasting)** [![Stars](https://img.shields.io/github/stars/amazon-science/chronos-forecasting?style=social&color=white)](https://github.com/amazon-science/chronos-forecasting/stargazers)  
+  *Amazon's pretrained transformer foundation model family for probabilistic time-series forecasting.* Tokenizes real-valued time-series via mean scaling and quantization, training autoregressive language models (T5 architecture) to achieve exceptional zero-shot accuracy across diverse domains.
+
+- **[GluonTS](https://github.com/awslabs/gluonts)** [![Stars](https://img.shields.io/github/stars/awslabs/gluonts?style=social&color=white)](https://github.com/awslabs/gluonts/stargazers)  
+  *AWS's probabilistic time-series modeling library.* Powered by PyTorch and MXNet, GluonTS specializes in probabilistic deep learning (DeepAR, Temporal WaveNet, Transformer) and powers Amazon Forecast under the hood.
+
+- **[PyTorch Forecasting](https://github.com/sktime/pytorch-forecasting)** [![Stars](https://img.shields.io/github/stars/sktime/pytorch-forecasting?style=social&color=white)](https://github.com/sktime/pytorch-forecasting/stargazers)  
+  *PyTorch Lightning framework built for advanced neural time-series forecasting.* Offers battle-tested implementations of the Temporal Fusion Transformer (TFT), N-BEATS, and DeepAR with native support for static features, past covariates, and future known regressors.
+
+- **[StatsForecast](https://github.com/Nixtla/statsforecast)** [![Stars](https://img.shields.io/github/stars/Nixtla/statsforecast?style=social&color=white)](https://github.com/Nixtla/statsforecast/stargazers)  
+  *High-performance statistical forecasting from Nixtla.* Implements AutoARIMA, AutoETS, AutoCES, and Theta with extreme parallelization via Numba C-compilation, delivering orders-of-magnitude faster runtimes across millions of series.
+
+- **[Merlion](https://github.com/salesforce/Merlion)** [![Stars](https://img.shields.io/github/stars/salesforce/Merlion?style=social&color=white)](https://github.com/salesforce/Merlion/stargazers)  
+  *Salesforce's end-to-end time series intelligence library.* Supports unified forecasting, anomaly detection, automated model selection, and ensemble combinations tailored for large-scale enterprise cloud telemetry.
+
+- **[NeuralProphet](https://github.com/ourownstory/neural_prophet)** [![Stars](https://img.shields.io/github/stars/ourownstory/neural_prophet?style=social&color=white)](https://github.com/ourownstory/neural_prophet/stargazers)  
+  *Bridge between classical decomposable models and deep neural networks.* Extends Meta's Prophet with PyTorch backpropagation, Auto-Regressive Feed-Forward Neural Networks (AR-Net), lagged regressors, and future events.
+
+- **[NeuralForecast](https://github.com/Nixtla/neuralforecast)** [![Stars](https://img.shields.io/github/stars/Nixtla/neuralforecast?style=social&color=white)](https://github.com/Nixtla/neuralforecast/stargazers)  
+  *Nixtla's dedicated neural forecasting collection.* Delivers high-throughput GPU training for state-of-the-art architectures including PatchTST, N-HiTS, TimesNet, TiDE, and Informer with calibrated probabilistic intervals.
+
+- **[LTSF-Linear](https://github.com/cure-lab/LTSF-Linear)** [![Stars](https://img.shields.io/github/stars/cure-lab/LTSF-Linear?style=social&color=white)](https://github.com/cure-lab/LTSF-Linear/stargazers)  
+  *The landmark codebase questioning Transformer complexity for time series.* Demonstrates that single-layer linear mappings (DLinear, NLinear) with trend-seasonal decomposition can match or exceed multi-million parameter transformers on long-term horizon benchmarks.
+
+- **[Orbit](https://github.com/uber/orbit)** [![Stars](https://img.shields.io/github/stars/uber/orbit?style=social&color=white)](https://github.com/uber/orbit/stargazers)  
+  *Uber's Bayesian time-series forecasting framework.* Powered by Stan and Pyro, Orbit enables Bayesian structural time-series modeling with interpretable trend, seasonality, and regression parameters for marketing mix modeling (MMM) and supply forecasting.
+
+- **[Greykite](https://github.com/linkedin/greykite)** [![Stars](https://img.shields.io/github/stars/linkedin/greykite?style=social&color=white)](https://github.com/linkedin/greykite/stargazers)  
+  *LinkedIn's time-series forecasting framework.* Features the flagship **Silverkite** algorithm, providing fast model training, automatic changepoint detection, holiday regressors, and diagnostics.
+
+- **[pmdarima](https://github.com/alkaline-ml/pmdarima)** [![Stars](https://img.shields.io/github/stars/alkaline-ml/pmdarima?style=social&color=white)](https://github.com/alkaline-ml/pmdarima/stargazers)  
+  *Statistical Python package bringing R's beloved `auto.arima` to Python.* Automatically discovers the optimal (p, d, q) orders via AIC/BIC minimizations with a clean scikit-learn estimator interface.
+
+- **[ETNA](https://github.com/tinkoff-ai/etna)** [![Stars](https://img.shields.io/github/stars/tinkoff-ai/etna?style=social&color=white)](https://github.com/tinkoff-ai/etna/stargazers)  
+  *Tinkoff's production-ready time-series library.* Provides end-to-end tooling from exploratory time-series data analysis and automated feature generation to classical/boosting forecasters and backtesting.
+
+---
+
+## 🧩 Time Series Forecasting Taxonomy
+
+Understanding the different paradigms in modern forecasting helps you choose the right tool for your project:
+
+```
+                          ┌──────────────────────────────────────────────┐
+                          │         Time Series Forecasting Tools        │
+                          └──────────────────────┬───────────────────────┘
+                                                 │
+         ┌────────────────────────┬──────────────┴──────────────┬────────────────────────┐
+         │                        │                             │                        │
+         ▼                        ▼                             ▼                        ▼
+┌──────────────────┐    ┌──────────────────┐          ┌──────────────────┐     ┌──────────────────┐
+│ Classical / Stat │    │  Deep Learning   │          │ Foundation (TSFM)│     │     AutoML       │
+├──────────────────┤    ├──────────────────┤          ├──────────────────┤     ├──────────────────┤
+│ • ARIMA / SARIMAX│    │ • TFT, N-BEATS   │          │ • TimesFM-3      │     │ • AutoGluon-TS   │
+│ • Exponential    │    │ • PatchTST       │          │ • Chronos-Bolt   │     │ • Databricks     │
+│   Smoothing(ETS) │    │ • TimesNet, TiDE │          │ • UniTS          │     │ • DataRobot      │
+│ • StatsForecast  │    │ • NeuralForecast │          │ • Zero-shot      │     │ • H2O Driverless │
+│ • pmdarima       │    │ • PyTorch-Forec. │          │   Multi-series   │     │ • Pecan AI       │
+└──────────────────┘    └──────────────────┘          └──────────────────┘     └──────────────────┘
+```
+
+| Paradigm | Primary Strengths | Limitations | Recommended Frameworks |
+| :--- | :--- | :--- | :--- |
+| **Statistical & Econometric** | Ultra-fast execution, mathematical interpretability, strong single-series baselines. | Struggles with large cross-series correlations and millions of multi-modal features. | [StatsForecast](https://github.com/Nixtla/statsforecast), [pmdarima](https://github.com/alkaline-ml/pmdarima), [Prophet](https://github.com/facebook/prophet) |
+| **Deep Learning** | Learns complex non-linear temporal dynamics and multivariate cross-channel signals. | Requires substantial training compute, hyperparameter tuning, and large historical data. | [Time-Series-Library](https://github.com/thuml/Time-Series-Library), [Darts](https://github.com/unit8co/darts), [NeuralForecast](https://github.com/Nixtla/neuralforecast) |
+| **Foundation Models (TSFMs)** | Zero-shot inference out of the box, cross-domain pretraining, robust quantile predictions. | Large inference memory footprint, early research stage for fine-tuning past covariates. | [TimesFM](https://github.com/google-research/timesfm), [Chronos](https://github.com/amazon-science/chronos-forecasting) |
+| **Automated ML (AutoML)** | Automated ensembling, backtesting validation, zero manual feature engineering required. | Higher licensing/compute costs; can produce complex ensembles that are harder to interpret. | [AutoGluon](https://github.com/autogluon/autogluon), [Databricks AutoML](https://docs.databricks.com/), [DataRobot](https://www.datarobot.com/) |
+
+---
+
+## 🎯 Industry Use Cases
+
+- **🛒 Retail & E-Commerce Demand Planning:** Forecasting SKU-level demand with promotional calendars, pricing elasticity, and store geographic hierarchy.
+- **⚡ Energy & Smart Grid Operations:** Day-ahead hourly load forecasting, solar/wind renewable generation prediction, and peak demand shaving.
+- **📈 Quantitative Finance & Trading:** High-frequency volatility forecasting, algorithmic portfolio balancing, and risk-adjusted return estimation.
+- **🏭 Industrial IoT & Predictive Maintenance:** Vibration, temperature, and pressure sensor drift prediction to prevent unexpected machine breakdown.
+- **☁️ Cloud Infrastructure Capacity:** Network bandwidth, CPU utilization, and auto-scaling resource prediction to eliminate SLA violations and cut cloud spend.
+
+---
+
+## 📏 Standard Evaluation Metrics
+
+Accurate evaluation requires choosing metrics aligned with your operational objective:
+
+- **MAE (Mean Absolute Error):** Measures average magnitude of errors in identical units to the target variable.
+  $$\text{MAE} = \frac{1}{n} \sum_{t=1}^n |y_t - \hat{y}_t|$$
+- **RMSE (Root Mean Squared Error):** Penalizes large deviations heavily, ideal when catastrophic misses carry high costs.
+  $$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{t=1}^n (y_t - \hat{y}_t)^2}$$
+- **WAPE (Weighted Absolute Percentage Error):** Normalized error across all series, resilient to intermittent or zero-demand spikes where standard MAPE diverges to infinity.
+  $$\text{WAPE} = \frac{\sum |y_t - \hat{y}_t|}{\sum |y_t|}$$
+- **CRPS (Continuous Ranked Probability Score):** The gold standard for evaluating probabilistic forecasting distributions and prediction intervals.
+
+---
+
+## 🤝 How to Contribute
+
+Contributions are warmly welcomed! Help keep this curated list comprehensive and up-to-date:
+
+1. 🍴 **Fork the repository**.
+2. 🌿 **Create a feature branch** (`git checkout -b feature/add-new-forecaster`).
+3. 📝 **Add your entry** to either the SaaS table or Open-Source section following the existing formatting and table columns. Ensure:
+   - Specific pricing and free tier/trial details are included for SaaS tools.
+   - GitHub stars badge (`style=social&color=white`) linking to `/stargazers` is included for open-source repos.
+4. 🚀 **Commit your updates** (`git commit -m 'Add ToolName to time-series forecasting directory'`).
+5. 📤 **Submit a Pull Request** with a concise description of the library or platform.
+
+---
+
+## 🌟 Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Time-Series-Forecasting&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Time-Series-Forecasting&type=date&legend=top-left)
+
+---
+
+## 💖 Support & Sponsoring
+
+A huge thank you to everyone exploring, applying, and contributing to the open-source time-series forecasting ecosystem! If this repository helped you discover the right tool or accelerates your ML workflow:
+
+- ⭐ **Star this repository** to help other engineers and researchers find it.
+- 🍴 **Fork and share** it with your data science teammates.
+- ☕ **Support future updates**: Show your appreciation and buy a coffee via the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+---
+
+## ⚖️ Disclaimer & License
+
+- **Disclaimer:** This repository is an independently curated educational list. All trademarks, logos, and company brand names belong to their respective copyright holders.
+- **License:** Distributed under the [MIT License](LICENSE).
