@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a>
   <a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
-  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square&logo=github" alt="GitHub Stars" /></a>
+  <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/stargazers"><img src="https://img.shields.io/github/stars/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square&logo=github" alt="GitHub_Stars" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/network/members"><img src="https://img.shields.io/github/forks/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square&logo=github" alt="GitHub Forks" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/issues"><img src="https://img.shields.io/github/issues/ishandutta2007/Awesome-Time-Series-Forecasting?style=flat-square" alt="Issues" /></a>
   <a href="https://github.com/ishandutta2007/Awesome-Time-Series-Forecasting/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License" /></a>
@@ -207,7 +207,7 @@ Contributions are warmly welcomed! Help keep this curated list comprehensive and
 2. 🌿 **Create a feature branch** (`git checkout -b feature/add-new-forecaster`).
 3. 📝 **Add your entry** to either the SaaS table or Open-Source section following the existing formatting and table columns. Ensure:
    - Specific pricing and free tier/trial details are included for SaaS tools.
-   - GitHub stars badge (`style=social&color=white`) linking to `/stargazers` is included for open-source repos.
+   - GitHub_Stars_Badge (`style=social&color=white`) linking to `/stargazers` is included for open-source repos.
 4. 🚀 **Commit your updates** (`git commit -m 'Add ToolName to time-series forecasting directory'`).
 5. 📤 **Submit a Pull Request** with a concise description of the library or platform.
 
